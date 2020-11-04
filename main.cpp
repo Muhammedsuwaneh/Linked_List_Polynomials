@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <windows.h>
+#include <iostream>
 #include "PolyNode.h"
 #include "Poly.h"
 
@@ -12,11 +14,19 @@ void Test7();
 void Test8();
 
 int main() {
+
+	// set windows console size
+	HWND console = GetConsoleWindow();
+	RECT ConsoleRect;
+	GetWindowRect(console, &ConsoleRect);
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 970, 700, true);
+
+
 	Test1();
 	printf("========================================================\n");
 	Test2();
 	printf("========================================================\n");
-	Test3();
+	/*Test3();
 	printf("========================================================\n");
 	Test4();
 	printf("========================================================\n");
@@ -26,7 +36,7 @@ int main() {
 	printf("========================================================\n");
 	Test7();
 	printf("========================================================\n");
-	Test8();
+	Test8();*/
 
 	return 0;
 } // end-main
@@ -66,7 +76,7 @@ void Print(PolyNode* poly) {
 /// Test1
 /// 
 void Test1() {
-	printf("%40s", "******TEST1******\n");
+	printf("%40s", "****** TEST 1 ******\n");
 
 	PolyNode* poly = NULL;
 	printf("Initial poly: "); Print(poly);
@@ -103,7 +113,7 @@ void Test1() {
 /// Test2: Creates several polys from expressions
 ///
 void Test2() {
-	printf("%40s", "******TEST2******\n");
+	printf("%40s", "****** TEST 2 ******\n");
 
 	PolyNode *poly = CreatePoly((char *)"-x^3  -  6x^2 + 4x + 22");
 	printf("[-x^3  -  6x^2 + 4x + 22]: "); Print(poly);
