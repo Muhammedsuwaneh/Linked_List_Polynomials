@@ -1,2 +1,5 @@
-﻿  main.cpp
+﻿  Poly.cpp
+C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\Poly.cpp(39,16): warning C4101: 'endptr': unreferenced local variable
+C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\Poly.cpp(338,6): warning C4101: 'e': unreferenced local variable
+C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\Poly.cpp(337,9): warning C4101: 'c': unreferenced local variable
   Poly.vcxproj -> C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\x64\Debug\Poly.exe
