@@ -8,5 +8,5 @@ Program Summary - Implementations
 4. Subtracts two or more Polynomials
 5. Multiplies two or more Polynomials
 6. Evaluates a given Polynomial
-7. Finds a Polynomial's derivative
-8. Plots a Polynomial bases on a given x1 and x2 values
+7. Finds a Polynomial's derivative i.e differentiates a Polynomial
+8. Plots a Polynomial base on a given x1 and x2 values
