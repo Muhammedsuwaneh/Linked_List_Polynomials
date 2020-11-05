@@ -4,8 +4,7 @@
 #include <string.h>
 #include <iostream>
 #include <vector>
-#include <ctype.h>
-#include <algorithm>
+#include <cmath>
 #include "Poly.h"
 #define _MAX_CHAR_ 255
 #define _MAX_VAL_ 50
@@ -335,6 +334,8 @@ PolyNode *Subtract(PolyNode *poly1, PolyNode *poly2){
 //
 PolyNode *Multiply(PolyNode *poly1, PolyNode *poly2){
 	PolyNode* node = new PolyNode();
+	double c;
+	int e;
 	return NULL;
 } //end-Multiply
 
@@ -342,8 +343,15 @@ PolyNode *Multiply(PolyNode *poly1, PolyNode *poly2){
 // Evaluates the polynomial at a particular "x" value and returns the result
 //
 double Evaluate(PolyNode *poly, double x){
-	// Fill this in
-	return 0;
+	double result = 0;
+
+	while (poly != NULL) {
+
+		result += poly->coef * pow(x, poly->exp);
+		poly = poly->next;
+	}
+
+	return result;
 } //end-Evaluate
 
 //-------------------------------------------------
