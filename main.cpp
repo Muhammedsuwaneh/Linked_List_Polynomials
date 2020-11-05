@@ -19,23 +19,23 @@ int main() {
 	HWND console = GetConsoleWindow();
 	RECT ConsoleRect;
 	GetWindowRect(console, &ConsoleRect);
-	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1000, 600, true);
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1200, 600, true);
 
-
+	printf("====================================================================================\n");
 	Test1();
-	printf("========================================================\n");
+	printf("====================================================================================\n");
 	Test2();
-	printf("========================================================\n");
+	printf("====================================================================================\n");
 	Test3();
-	printf("========================================================\n");
-	/*Test4();
-	printf("========================================================\n");
+	printf("====================================================================================\n");
+	Test4();
+	printf("====================================================================================\n");
 	Test5();
-	printf("========================================================\n");
-	Test6();
-	printf("========================================================\n");
+	printf("====================================================================================\n");
+	/*Test6();
+	printf("====================================================================================\n");
 	Test7();
-	printf("========================================================\n");
+	printf("====================================================================================\n");
 	Test8();*/
 
 	return 0;
@@ -152,7 +152,7 @@ void Test2() {
 /// Creates two polys and adds them up
 ///
 void Test3() {
-	printf("%40s", "******TEST3******\n");
+	printf("%40s", "****** TEST 3 ******\n");
 
 	PolyNode *poly1 = CreatePoly((char*)"-x^3  -  6x^2 + 4x + 22");
 	printf("%25s", "Poly1[-x^3-6x^2+4x+22]: "); Print(poly1);
@@ -161,7 +161,7 @@ void Test3() {
 	printf("%25s", "Poly2[-x^2+x-5]: "); Print(poly2);
 
 	PolyNode *poly3 = Add(poly1, poly2);
-	printf("--------------------------------------------------- +\n");
+	printf("-------------------------------------------------------(+)\n");
 	printf("%25s", "Poly1+Poly2: "); Print(poly3);
 
 	DeletePoly(poly1);
@@ -173,7 +173,7 @@ void Test3() {
 	// Creates two polys and subtracts one from the other
 	//
 void Test4() {
-	printf("%40s", "******TEST4******\n");
+	printf("%40s", "****** TEST 4 ******\n");
 
 	PolyNode *poly1 = CreatePoly((char*)"-x^3  -  6x^2 + 4x + 22");
 	printf("%25s", "Poly1[-x^3-6x^2+4x+22]: "); Print(poly1);
@@ -182,7 +182,7 @@ void Test4() {
 	printf("%25s", "Poly2[-x^2+x-5]: "); Print(poly2);
 
 	PolyNode *poly3 = Subtract(poly1, poly2);
-	printf("------------------------------------------------------- -\n");
+	printf("-------------------------------------------------------(-)\n");
 	printf("%25s", "Poly1-Poly2: "); Print(poly3);
 } //end-Test4
 
@@ -190,7 +190,7 @@ void Test4() {
 // Creates two polys and multiplies them
 //
 void Test5() {
-	printf("%40s", "******TEST5******\n");
+	printf("%40s", "****** TEST 5 ******\n");
 
 	PolyNode* poly1 = CreatePoly((char *)"-x^3  -  6x^2 + 4x + 22");
 	printf("%25s", "Poly1[-x^3-6x^2+ 4x+22]: "); Print(poly1);
@@ -199,7 +199,7 @@ void Test5() {
 	printf("%25s", "Poly2[-x^2+x-5]: "); Print(poly2);
 
 	PolyNode* poly3 = Multiply(poly1, poly2);
-	printf("------------------------------------------------------- *\n");
+	printf("---------------------------------------------------------(*)\n");
 	printf("%25s", "Poly1*Poly2: "); Print(poly3);
 } //end-Test5
 
@@ -207,7 +207,7 @@ void Test5() {
 // Creates a polynomial and evaluates it 
 //
 void Test6() {
-	printf("%40s", "******TEST6******\n");
+	printf("%40s", "****** TEST 6 ******\n");
 
 	PolyNode* poly = CreatePoly((char *)"-x^3  -  6x^2 + 4x + 22");
 	printf("%25s", "Poly[-x^3-6x^2+ 4x+22]: "); Print(poly);
@@ -218,7 +218,7 @@ void Test6() {
 // Takes the derivative of a polynomial
 //
 void Test7() {
-	printf("%40s", "******TEST7******\n");
+	printf("%40s", "****** TEST 7 ******\n");
 
 	PolyNode* poly = CreatePoly((char *)"-x^3  -  6x^2 + 4x + 22");
 	printf("%25s", "Poly[-x^3-6x^2+ 4x+22]: "); Print(poly);
@@ -231,7 +231,7 @@ void Test7() {
 // Plots a polynomial on the screen
 //
 void Test8() {
-	printf("%40s", "******TEST8******\n");
+	printf("%40s", "****** TEST 8 ******\n");
 	printf("%40s\n\n", "Plot of the function 0.004x^3+0.04x^2-1.5x-4.3");
 
 	PolyNode* poly = CreatePoly((char *)"0.004x^3+0.04x^2-1.5x-4.3");

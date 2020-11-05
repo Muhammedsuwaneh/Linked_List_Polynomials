@@ -254,8 +254,38 @@ PolyNode* AddNode(PolyNode *head, double coef, int exp){
 PolyNode *Add(PolyNode *poly1, PolyNode *poly2){
 	
 	PolyNode* node = new PolyNode();
+	double c;
+	int e;
 
-	return NULL;
+	while (poly1 != NULL && poly2 != NULL) {
+
+		if (poly1->exp > poly2->exp) {
+
+			c = poly1->coef;
+			e = poly1->exp;
+			node = AddNode(node, c, e);
+			poly1 = poly1->next;
+		}
+
+		else if (poly2->exp > poly1->exp) {
+
+			c = poly2->coef;
+			e = poly2->exp;
+			node = AddNode(node, c, e);
+			poly2 = poly2->next;
+		}
+
+		else {
+
+			c = poly1->coef + poly2->coef;
+			e = poly1->exp;
+			node = AddNode(node, c, e);
+			poly1 = poly1->next;
+			poly2 = poly2->next;
+		}
+	}
+
+	return node;
 } //end-Add
 
 //-------------------------------------------------
@@ -263,9 +293,40 @@ PolyNode *Add(PolyNode *poly1, PolyNode *poly2){
 // Computes: poly3 = poly1 - poly2 and returns poly3
 //
 PolyNode *Subtract(PolyNode *poly1, PolyNode *poly2){
-	PolyNode* node = new PolyNode();
 
-	return NULL;
+	PolyNode* node = new PolyNode();
+	double c;
+	int e;
+
+	while (poly1 != NULL && poly2 != NULL) {
+
+		if (poly1->exp > poly2->exp) {
+
+			c = poly1->coef;
+			e = poly1->exp;
+			node = AddNode(node, c, e);
+			poly1 = poly1->next;
+		}
+
+		else if (poly2->exp > poly1->exp) {
+
+			c = poly2->coef;
+			e = poly2->exp;
+			node = AddNode(node, c, e);
+			poly2 = poly2->next;
+		}
+
+		else {
+
+			c = poly1->coef - poly2->coef;
+			e = poly1->exp;
+			node = AddNode(node, c, e);
+			poly1 = poly1->next;
+			poly2 = poly2->next;
+		}
+	}
+
+	return node;
 } //end-Substract
 
 //-------------------------------------------------

@@ -1,0 +1,2 @@
+C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\x64\Debug\Poly.exe
+C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\x64\Debug\Poly.pdb
