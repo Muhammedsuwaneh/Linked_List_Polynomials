@@ -189,18 +189,46 @@ void DeletePoly(PolyNode* poly) {
 //
 PolyNode* AddNode(PolyNode *head, double coef, int exp){
 
-	PolyNode* temp, * curr, * prev = head;
+	PolyNode* temp, *curr, *prev;
 
 	// allocated space for temp node from heap
 
 	temp = new PolyNode();
 
-	curr = prev;
+	curr = prev = head;
 
 	while (curr != NULL) {
 
 		// compare new exponent and current node exponent
 		if (exp > curr->exp) break;
+
+		// check for duplicates
+		if (exp == curr->exp) {
+
+			curr->coef = curr->coef + coef;
+
+			if (curr->coef == 0) {	
+
+				PolyNode* new_temp;
+
+				if (curr == head) {
+
+					new_temp = head;
+					head = new_temp->next;
+					delete new_temp;
+				}
+
+				else {
+
+					new_temp = prev->next;
+					prev->next = new_temp->next;
+					delete new_temp;
+				}
+			}
+			
+			return head;
+			break;
+		}
 
 		// change position of current pointer 
 		prev = curr;
@@ -224,7 +252,9 @@ PolyNode* AddNode(PolyNode *head, double coef, int exp){
 // Computes: poly3 = poly1 + poly2 and returns poly3
 //
 PolyNode *Add(PolyNode *poly1, PolyNode *poly2){
-	// Fill this in
+	
+	PolyNode* node = new PolyNode();
+
 	return NULL;
 } //end-Add
 
@@ -233,7 +263,8 @@ PolyNode *Add(PolyNode *poly1, PolyNode *poly2){
 // Computes: poly3 = poly1 - poly2 and returns poly3
 //
 PolyNode *Subtract(PolyNode *poly1, PolyNode *poly2){
-	// Fill this in
+	PolyNode* node = new PolyNode();
+
 	return NULL;
 } //end-Substract
 
@@ -242,7 +273,7 @@ PolyNode *Subtract(PolyNode *poly1, PolyNode *poly2){
 // Computes: poly3 = poly1 * poly2 and returns poly3
 //
 PolyNode *Multiply(PolyNode *poly1, PolyNode *poly2){
-	// Fill this in
+	PolyNode* node = new PolyNode();
 	return NULL;
 } //end-Multiply
 

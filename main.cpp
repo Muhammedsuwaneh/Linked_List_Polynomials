@@ -19,16 +19,16 @@ int main() {
 	HWND console = GetConsoleWindow();
 	RECT ConsoleRect;
 	GetWindowRect(console, &ConsoleRect);
-	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 970, 700, true);
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1000, 600, true);
 
 
 	Test1();
 	printf("========================================================\n");
 	Test2();
 	printf("========================================================\n");
-	/*Test3();
+	Test3();
 	printf("========================================================\n");
-	Test4();
+	/*Test4();
 	printf("========================================================\n");
 	Test5();
 	printf("========================================================\n");
