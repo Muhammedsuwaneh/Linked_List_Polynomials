@@ -19,7 +19,7 @@ int main() {
 	HWND console = GetConsoleWindow();
 	RECT ConsoleRect;
 	GetWindowRect(console, &ConsoleRect);
-	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1200, 600, true);
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1200, 700, false);
 
 	printf("====================================================================================\n");
 	Test1();
@@ -36,7 +36,7 @@ int main() {
 	printf("====================================================================================\n");
 	Test7();
 	printf("====================================================================================\n");
-	//Test8();
+	Test8();
 
 	return 0;
 } // end-main

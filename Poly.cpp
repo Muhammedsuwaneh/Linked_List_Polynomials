@@ -333,10 +333,15 @@ PolyNode *Subtract(PolyNode *poly1, PolyNode *poly2){
 // Computes: poly3 = poly1 * poly2 and returns poly3
 //
 PolyNode *Multiply(PolyNode *poly1, PolyNode *poly2){
+
 	PolyNode* node = new PolyNode();
+	PolyNode* temp = NULL;
 	double c;
 	int e;
-	return NULL;
+
+
+
+	return node;
 } //end-Multiply
 
 //-------------------------------------------------
@@ -387,5 +392,45 @@ PolyNode *Derivative(PolyNode *poly){
 // then just skip it. Otherwise put a '*' char depicting the curve
 //
 void Plot(PolyNode *poly, int x1, int x2){
-	// Fill this in	
+
+	char** matFrame;
+
+	matFrame = new char*[_MAX_VAL_];
+
+	for (int i = x1; i < _MAX_VAL_; i++) {
+
+		matFrame[i] = new char[_MAX_VAL_];
+	}
+
+	for (int i = x1; i < x2; i++) {
+
+		for (int j = x1; j < x2; j++) {
+
+			matFrame[i][j] = ' ';
+		}
+	}
+
+	for (int i = x1; i <= x2; i++) {
+
+		for (int j = x1; j <= x2; j++) {
+
+			if (j == x2 + x1 / 2)
+				matFrame[i][j] = '*';
+			if (i == x2 + x1 / 2) 
+				matFrame[i][j] = '*';
+			if (i + j == 2)
+				matFrame[i][j] = '*';
+		}
+	}
+
+	for (int i = x1; i < x2; i++) {
+
+		for (int j = x1; j < x2; j++) {
+
+			std::cout << matFrame[i][j] << " ";
+		}
+
+		std::cout << "\n";
+	}
+
 } //end-Plot
