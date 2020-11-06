@@ -393,41 +393,46 @@ PolyNode *Derivative(PolyNode *poly){
 //
 void Plot(PolyNode *poly, int x1, int x2){
 
-	char** matFrame;
+	char** graph;
+	int y;
 
-	matFrame = new char*[_MAX_VAL_];
+	graph = new char*[_MAX_VAL_];
 
-	for (int i = x1; i < _MAX_VAL_; i++) {
+	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) {
 
-		matFrame[i] = new char[_MAX_VAL_];
+		graph[i] = new char[_MAX_VAL_];
+	}
+
+	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) {
+
+		for (int j = -_MAX_VAL_; j < _MAX_VAL_; j++) {
+
+			graph[i][j] = ' ';
+		}
+	}
+	
+	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) {
+
+		for (int j = -_MAX_VAL_; j < _MAX_VAL_; j++) {
+
+			if (j == -1*(x1 + x2) / 2)
+				graph[j][i] = '|';
+			if (i == -1*(x1 + x2) / 2)
+				graph[j][i] = '-';
+		}
+	}
+
+	for (int i = x1; i < x2; i++) {
+
+		y = Evaluate(poly, i);
+		graph[i][y] = '*';
 	}
 
 	for (int i = x1; i < x2; i++) {
 
 		for (int j = x1; j < x2; j++) {
 
-			matFrame[i][j] = ' ';
-		}
-	}
-
-	for (int i = x1; i <= x2; i++) {
-
-		for (int j = x1; j <= x2; j++) {
-
-			if (j == x2 + x1 / 2)
-				matFrame[i][j] = '*';
-			if (i == x2 + x1 / 2) 
-				matFrame[i][j] = '*';
-			if (i + j == 2)
-				matFrame[i][j] = '*';
-		}
-	}
-
-	for (int i = x1; i < x2; i++) {
-
-		for (int j = x1; j < x2; j++) {
-
-			std::cout << matFrame[i][j] << " ";
+			std::cout << graph[j][i];
 		}
 
 		std::cout << "\n";
