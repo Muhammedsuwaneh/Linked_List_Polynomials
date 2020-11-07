@@ -335,11 +335,26 @@ PolyNode *Subtract(PolyNode *poly1, PolyNode *poly2){
 PolyNode *Multiply(PolyNode *poly1, PolyNode *poly2){
 
 	PolyNode* node = new PolyNode();
-	PolyNode* temp = NULL;
+	PolyNode* A = NULL, *B = NULL;
 	double c;
 	int e;
 
+	A = poly1;
 
+	while (A != NULL) {
+
+		B = poly2;
+
+		while (B != NULL) {
+
+			c = A->coef * B->coef;
+			e = A->exp + B->exp;
+			node = AddNode(node, c, e);
+			B = B->next;
+		}
+
+		A = A->next;
+	}   
 
 	return node;
 } //end-Multiply
@@ -421,6 +436,9 @@ void Plot(PolyNode *poly, int x1, int x2){
 				graph[j][i] = '-';
 		}
 	}
+
+	graph[-2][-20] = 'y';
+	graph[25][1] = 'x';
 
 	for (int i = x1; i < x2; i++) {
 
