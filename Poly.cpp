@@ -32,11 +32,7 @@ PolyNode *CreatePoly(char *expr){
 	*/
 	std::istringstream iss_temp(expr);
 	std::string buffer, coeff, exp;
-	std::vector<double>coefficients;
-	std::vector<int>exponents;
-	double c;
-	int e;
-	char* temp, * endptr;
+	char* temp;
 
 	temp = new char[_MAX_CHAR_];
 
@@ -52,122 +48,35 @@ PolyNode *CreatePoly(char *expr){
 	if (buffer[0] >= '0' && buffer[0] <= '9')
 		buffer = "+" + buffer;
 
+	int i = 0;
 	// start obtaining the coefficients and exponents of terms
-	for (int i = 0; i < buffer.length(); i++) {
+	while (i < buffer.length()) {
 
-		// declare stringstream format for storing and swift conversion of strings
 		std::stringstream coeff_iss;
 		std::stringstream exp_iss;
 
-		// declare new coeff and exp
-		double new_coeff;
-		int new_exp;
+		// declare temp coeff and exp
+		double c = 0;
+		int e = 0;
 
-		coeff = "";
-		exp = "";
+		// examine term
+		while (1) {
 
-		// get sign of buffer[i]
-		bool sign = (buffer[i] == '-') ? 1 : 0;
+			if (buffer[i] == 'x') {
 
-		// position of coefficient
-		i += 1;
-
-		// append coefficient as 1 
-		if (buffer[i] == 'x') {
-
-			coeff = '1';
-		}
-
-		// append numbers before x - coefficients
-		while (buffer[i] != 'x' && buffer[i] != ' ') {
-
-			coeff += buffer[i];
-			i++;
-		}
-
-		// series of test to specify the correct exponent and coefficient
-		if (buffer[i] == 'x' && buffer[i + 1] != '^') {
-
-			exp = '1';
-			i += 1;
-		}
-
-		else if (buffer[i] != 'x' && buffer[i + 1] != '^') {
-
-			exp = '0';
-
-			coeff_iss << coeff;
-			coeff_iss >> new_coeff;
-
-			exp_iss << exp;
-			exp_iss >> new_exp;
-
-			if (sign) {
-
-				new_coeff = new_coeff * -1;
+				coeff = '1';
+				break;
 			}
 
-			// save coefficients and exponents
-			coefficients.push_back(new_coeff);
-			exponents.push_back(new_exp);
+			while (buffer[i] != 'x') {
 
-			break;
+				coeff += buffer[i];
+				i++;
+			}
 		}
-
-		else {
-
-			// shift to the exponent position
-			i += 2;
-		}
-
-		// now append the exponents before the end of the term
-		while (buffer[i] != '+' && buffer[i] != '-' && buffer[i] != ' ') {
-
-			exp += buffer[i];
-			i++;
-		}
-
-		// convert coeff and exp in their whole numbers
-		coeff_iss << coeff;
-		coeff_iss >> new_coeff;
-
-		exp_iss << exp;
-		exp_iss >> new_exp;
-
-		// check for coefficient sign and update if necessary
-		if (sign) {
-
-			new_coeff = new_coeff * -1;
-		}
-
-		coefficients.push_back(new_coeff);
-		exponents.push_back(new_exp);
-
-		i--;
-
 	}
-
-	//// output results
-
-	//for (int i = 0; i < coefficients.size(); i++)
-	//	std::cout << coefficients[i] << " ";
-
-	//std::cout << std::endl;
-
-	//for (int i = 0; i < exponents.size(); i++)
-	//	std::cout << exponents[i] << " ";
 
 	std::cout << std::endl;
-
-	// create a Polynomial node based on exponents and coefficients
-
-	for (int i = 0; i < coefficients.size(); i++) {
-
-		c = coefficients[i];
-		e = exponents[i];
-
-		poly = AddNode(poly, c, e);
-	}
 
 	// return new Polynode created
 	return poly;
@@ -410,50 +319,6 @@ void Plot(PolyNode *poly, int x1, int x2){
 
 	char** graph;
 	int y;
-
-	graph = new char*[_MAX_VAL_];
-
-	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) {
-
-		graph[i] = new char[_MAX_VAL_];
-	}
-
-	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) {
-
-		for (int j = -_MAX_VAL_; j < _MAX_VAL_; j++) {
-
-			graph[i][j] = ' ';
-		}
-	}
 	
-	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) {
-
-		for (int j = -_MAX_VAL_; j < _MAX_VAL_; j++) {
-
-			if (j == -1*(x1 + x2) / 2)
-				graph[j][i] = '|';
-			if (i == -1*(x1 + x2) / 2)
-				graph[j][i] = '-';
-		}
-	}
-
-	graph[-2][-20] = 'y';
-	graph[25][1] = 'x';
-
-	for (int i = x1; i < x2; i++) {
-
-		y = Evaluate(poly, i);
-		graph[i][y] = '*';
-	}
-
-	for (int i = x1; i < x2; i++) {
-
-		for (int j = x1; j < x2; j++) {
-
-			std::cout << graph[j][i];
-		}
-
-		std::cout << "\n";
-	}
 
 } //end-Plot

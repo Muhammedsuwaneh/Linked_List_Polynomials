@@ -1,4 +1,0 @@
-﻿  Poly.cpp
-C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\Poly.cpp(39,16): warning C4101: 'endptr': unreferenced local variable
-C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\Poly.cpp(445,15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Poly.vcxproj -> C:\Users\PROJECT VENUS\Documents\C++ Data Structures and Algorithms\Assigments\LinkedList\Polyc\x64\Debug\Poly.exe
