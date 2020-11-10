@@ -135,7 +135,7 @@ void Test2() {
 	// debugged
 	/*PolyNode *poly = CreatePoly((char*)"x^6 + 24.6x^4 - x^3 - 61.3x^1 + 4.2");
 	printf("[x^6 + 24.6x^4 - x^3 - 61.3x^1 + 4.2]: "); Print(poly);
-	DeletePoly(poly);*/
+	DeletePoly(poly);
 
 	/*poly = CreatePoly((char*)" -x^34+x^20 -34.3x^5  +   x -  55");
 	printf("[ -x^34+x^20 -34.3x^5  +   x -  55]: "); Print(poly);

@@ -44,6 +44,7 @@ PolyNode *CreatePoly(char *expr){
 
 	std::istringstream iss(temp);
 
+	// ax^n + bx^n-1....c
 	std::getline(iss, buffer);
 
 	if (buffer[0] >= '0' && buffer[0] <= '9')
@@ -52,11 +53,13 @@ PolyNode *CreatePoly(char *expr){
 	// initialize seekers
 	int i = 0, j = 0;
 
+	// first term coeff's sign 
 	if (buffer[0] == '-' || buffer[0] == '+') i++;
 
 	// start obtaining the coefficients and exponents of terms
 	while (i < buffer.length()) {
 
+		// std::stringstream declaration
 		std::stringstream coeff_iss;
 		std::stringstream exp_iss;
 
@@ -64,36 +67,44 @@ PolyNode *CreatePoly(char *expr){
 		double c = 0;
 		int e = 0;
 
+		// empty strings
 		coeff = "";
 		exp = "";
 
+		// check for coeff sign
 		bool sign = (buffer[j] == '-') ? true : false;
 
 		// seek coefficients
 		while (1) {
 
+			// 1x^n -> x
 			if (buffer[i] == 'x') {
 
 				coeff = '1';
 				break;
 			}
 
+			// ax^n -> ax^n
 			while (buffer[i] != 'x' && buffer[i] != ' ') {
 
 				coeff += buffer[i];
 				i++;
+
 			}// end-while-loop
+
 			break;
 		}// end-while-loop
 
 		// seek exponents 
 		while (1) {
-
+            
+			// ax^0 -> a
 			if (buffer[i] != 'x' && buffer[i + 1] != '^' && coeff != "1") {
 				exp = '0';
 				break;
 			}
 
+			// ax^1 -> ax
 			else if (buffer[i] == 'x' && buffer[i + 1] != '^') {
 				exp = '1';
 				break;
@@ -101,6 +112,7 @@ PolyNode *CreatePoly(char *expr){
 
 			else {
 
+				// shift to exponent
 				i += 2;
 				while (buffer[i] != '+' && buffer[i] != '-') {
 					exp += buffer[i];
@@ -121,10 +133,10 @@ PolyNode *CreatePoly(char *expr){
 		exp_iss << exp;
 		exp_iss >> e;
 
+		// append sign if true
 		if (sign == true) c = c * -1;
 
 		// add coefficients and exponents to node
-
 		poly = AddNode(poly, c, e);
 
 		i++;
@@ -159,8 +171,7 @@ PolyNode* AddNode(PolyNode *head, double coef, int exp){
 
 	PolyNode* temp, *curr, *prev;
 
-	// allocated space for temp node from heap
-
+	// allocate space for temp node from heap
 	temp = new PolyNode();
 
 	curr = prev = head;
