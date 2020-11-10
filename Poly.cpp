@@ -38,6 +38,7 @@ PolyNode *CreatePoly(char *expr){
 
 	for (int i = 0; i < sizeof(iss_temp); i++) temp[i] = ' ';
 
+	// remove white spaces from string
 	for (int i = 0; i < sizeof(iss_temp); i++)
 		iss_temp >> std::skipws >> temp[i];
 
@@ -48,7 +49,11 @@ PolyNode *CreatePoly(char *expr){
 	if (buffer[0] >= '0' && buffer[0] <= '9')
 		buffer = "+" + buffer;
 
-	int i = 0;
+	// initialize seekers
+	int i = 0, j = 0;
+
+	if (buffer[0] == '-' || buffer[0] == '+') i++;
+
 	// start obtaining the coefficients and exponents of terms
 	while (i < buffer.length()) {
 
@@ -59,7 +64,12 @@ PolyNode *CreatePoly(char *expr){
 		double c = 0;
 		int e = 0;
 
-		// examine term
+		coeff = "";
+		exp = "";
+
+		bool sign = (buffer[j] == '-') ? true : false;
+
+		// seek coefficients
 		while (1) {
 
 			if (buffer[i] == 'x') {
@@ -68,13 +78,63 @@ PolyNode *CreatePoly(char *expr){
 				break;
 			}
 
-			while (buffer[i] != 'x') {
+			while (buffer[i] != 'x' && buffer[i] != ' ') {
 
 				coeff += buffer[i];
 				i++;
+			}// end-while-loop
+			break;
+		}// end-while-loop
+
+		// seek exponents 
+		while (1) {
+
+			if (buffer[i] != 'x' && buffer[i + 1] != '^' && coeff != "1") {
+				exp = '0';
+				break;
 			}
-		}
+
+			else if (buffer[i] == 'x' && buffer[i + 1] != '^') {
+				exp = '1';
+				break;
+			}
+
+			else {
+
+				i += 2;
+				while (buffer[i] != '+' && buffer[i] != '-') {
+					exp += buffer[i];
+					i++;
+				}
+				// end-while-loop
+
+				break;
+			}
+
+		}// end-while-loop
+
+		// convert coefficients and exponents to int and double
+
+		coeff_iss << coeff;
+		coeff_iss >> c;
+
+		exp_iss << exp;
+		exp_iss >> e;
+
+		if (sign == true) c = c * -1;
+
+		// add coefficients and exponents to node
+
+		poly = AddNode(poly, c, e);
+
+		i++;
+		j = i - 1;
+
+		// stop seeking
+		if (buffer[i] == ' ') break;
+
 	}
+	// end-while-loop
 
 	std::cout << std::endl;
 
@@ -141,7 +201,8 @@ PolyNode* AddNode(PolyNode *head, double coef, int exp){
 		// change position of current pointer 
 		prev = curr;
 		curr = curr->next;
-	}
+
+	}// end-while-loop
 
 	// assign coeff and exp to temp node
 	temp->exp = exp;
@@ -191,7 +252,8 @@ PolyNode *Add(PolyNode *poly1, PolyNode *poly2){
 			poly1 = poly1->next;
 			poly2 = poly2->next;
 		}
-	}
+
+	}// end-while-loop
 
 	return node;
 } //end-Add
@@ -232,7 +294,8 @@ PolyNode *Subtract(PolyNode *poly1, PolyNode *poly2){
 			poly1 = poly1->next;
 			poly2 = poly2->next;
 		}
-	}
+
+	}// end-while-loop
 
 	return node;
 } //end-Substract
@@ -263,7 +326,8 @@ PolyNode *Multiply(PolyNode *poly1, PolyNode *poly2){
 		}
 
 		A = A->next;
-	}   
+
+	}// end-while-loop
 
 	return node;
 } //end-Multiply
@@ -278,7 +342,8 @@ double Evaluate(PolyNode *poly, double x){
 
 		result += poly->coef * pow(x, poly->exp);
 		poly = poly->next;
-	}
+
+	}// end-while-loop
 
 	return result;
 } //end-Evaluate
@@ -302,7 +367,8 @@ PolyNode *Derivative(PolyNode *poly){
 		}
 
 		poly = poly->next;
-	}
+
+	}// end-while-loop
 
 	return node;
 } //end-Derivative
