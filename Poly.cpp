@@ -395,7 +395,39 @@ PolyNode *Derivative(PolyNode *poly){
 void Plot(PolyNode *poly, int x1, int x2){
 
 	char** graph;
-	int y;
+	int fx;
 	
+	// allocate space to graph
+	graph = new char*[_MAX_VAL_];
+
+	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) graph[i] = new char[_MAX_VAL_];
+
+	// initialize graph
+	for (int i = x1; i < x2; i++) {
+
+		for (int j = x2; j > x1; j--) {
+
+             graph[j][i] = ' ';
+		}
+	}
+
+	// plot graph
+	for (int i = x2; i > x1; i--) {
+
+		fx = Evaluate(poly, i);
+		graph[i][fx] = '*';
+	}
+
+	// print graph
+	for (int i = x1; i < x2; i++) {
+
+		for (int j = x2; j > x1; j--) {
+
+			std::cout << graph[j][i];
+		}
+
+		std::cout << "\n";
+	}
+
 
 } //end-Plot
