@@ -113,41 +113,48 @@ void Test1() {
 /// Test2: Creates several polys from expressions
 ///
 void Test2() {
-	/*printf("%40s", "****** TEST 2 ******\n");
 
-	// debugged
+	printf("%40s", "****** TEST 2 ******\n");
+
+	// tested
 	PolyNode *poly = CreatePoly((char *)"-x^3  -  6x^2 + 4x + 22");
 	printf("[-x^3  -  6x^2 + 4x + 22]: "); Print(poly);
-	DeletePoly(poly);*/
+	DeletePoly(poly);
 
-	/*poly = CreatePoly((char*)"-x^2 +x  -  5");
+	// tested
+	poly = CreatePoly((char*)"-x^2 +x  -  5");
 	printf("[-x^2 +x  -  5]: "); Print(poly);
 	DeletePoly(poly);
 
+	// tested
 	poly = CreatePoly((char*)"2.3x^4 + 5x^3 - 2.6x - 4");
 	printf("[2.3x^4 + 5x^3 - 2.6x - 4]: "); Print(poly);
 	DeletePoly(poly);
 
 	poly = CreatePoly((char*)"-4.5x^10 - 45.44");
 	printf("[-4.5x^10 - 45.44]: "); Print(poly);
-	DeletePoly(poly);*/
+	DeletePoly(poly);
 
-	// debugged
-	/*PolyNode *poly = CreatePoly((char*)"x^6 + 24.6x^4 - x^3 - 61.3x^1 + 4.2");
+	// tested
+	poly = CreatePoly((char*)"x^6 + 24.6x^4 - x^3 - 61.3x^1 + 4.2");
 	printf("[x^6 + 24.6x^4 - x^3 - 61.3x^1 + 4.2]: "); Print(poly);
 	DeletePoly(poly);
 
-	/*poly = CreatePoly((char*)" -x^34+x^20 -34.3x^5  +   x -  55");
+	// tested
+	poly = CreatePoly((char*)" -x^34+x^20 -34.3x^5  +   x -  55");
 	printf("[ -x^34+x^20 -34.3x^5  +   x -  55]: "); Print(poly);
 	DeletePoly(poly);
 
+	// tested
 	poly = CreatePoly((char*)"x^6 + 24.6x^4 - x^3 - 61.3x + 4.2");
 	printf("[x^6 + 24.6x^4 - x^3 - 61.3x + 4.2]: "); Print(poly);
 	DeletePoly(poly);
-
+    
+	// tested
 	poly = CreatePoly((char*)"-33");
 	printf("[-33]: "); Print(poly);
-	DeletePoly(poly);*/
+	DeletePoly(poly);
+
 } //end-Test2
 
 ///----------------------------------------------------------------
