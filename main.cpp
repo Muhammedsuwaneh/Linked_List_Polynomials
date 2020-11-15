@@ -19,7 +19,7 @@ int main() {
 	HWND console = GetConsoleWindow();
 	RECT ConsoleRect;
 	GetWindowRect(console, &ConsoleRect);
-	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1200, 700, false);
+	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1200, 1200, false);
 
 	printf("====================================================================================\n");
 	Test1();
@@ -37,6 +37,7 @@ int main() {
 	Test7();
 	printf("====================================================================================\n");
 	Test8();
+	printf("====================================================================================\n");
 
 	return 0;
 } // end-main
@@ -243,8 +244,31 @@ void Test8() {
 	printf("%40s", "****** TEST 8 ******\n");
 	printf("%40s\n\n", "Plot of the function 0.004x^3+0.04x^2-1.5x-4.3");
 
-	PolyNode* poly = CreatePoly((char *)"0.004x^3+0.04x^2-1.5x-4.3");
+	// test 1 - Cubic graph 
+    PolyNode* poly = CreatePoly((char *)"0.004x^3+0.04x^2-1.5x-4.3");
+	std::cout << "\n###################################################\n";
+	printf("Graph of: "); Print(poly);
+	printf("Scale: x-axis- 1cm 5 units ---- y-axis- 1cm 5units\n");
+	std::cout << "###################################################\n\n";
 	Plot(poly, -30, 30);
+	DeletePoly(poly);
+
+	// test 2 - Positive Quadratic Graph
+
+	poly = CreatePoly((char*)"0.3x^2+0.4x-0.5x-5.4");
+	std::cout << "\n###################################################\n";
+	printf("Graph of: "); Print(poly);
+	printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
+	std::cout << "###################################################\n\n";
+	Plot(poly, -30, 30);
+	DeletePoly(poly);
+
+	// test 3 - Linear Graph
+
+	
+
+
+	
 } //end-Test8
 
 

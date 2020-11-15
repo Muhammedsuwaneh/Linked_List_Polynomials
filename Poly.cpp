@@ -4,10 +4,10 @@
 #include <string.h>
 #include <iostream>
 #include <vector>
+#include <iomanip>
 #include <cmath>
 #include "Poly.h"
-#define _MAX_CHAR_ 255
-#define _MAX_VAL_ 50
+#define _MAX_CHAR 255
 
 //-------------------------------------------------
 // Creates a polynomial from an expression.
@@ -34,7 +34,7 @@ PolyNode *CreatePoly(char *expr){
 	std::string buffer, coeff, exp;
 	char* temp;
 
-	temp = new char[_MAX_CHAR_];
+	temp = new char[_MAX_CHAR];
 
 	for (int i = 0; i < sizeof(iss_temp); i++) temp[i] = ' ';
 
@@ -395,39 +395,77 @@ PolyNode *Derivative(PolyNode *poly){
 void Plot(PolyNode *poly, int x1, int x2){
 
 	char** graph;
-	int fx;
-	
-	// allocate space to graph
-	graph = new char*[_MAX_VAL_];
+	int fx = NULL;
 
-	for (int i = -_MAX_VAL_; i < _MAX_VAL_; i++) graph[i] = new char[_MAX_VAL_];
+	// allocate some space to graph matrix
+	graph = new char* [39];
 
-	// initialize graph
-	for (int i = x1; i < x2; i++) {
+	for (int i = -39; i < 39; i++) 
+		graph[i] = new char[39];
 
-		for (int j = x2; j > x1; j--) {
+	// initialize graph with spaces
+	for (int y = 12; y > -12; y--) {
 
-             graph[j][i] = ' ';
+		for (int x = -39; x < 39; x++) {
+
+			graph[x][y] = ' ';
 		}
 	}
 
-	// plot graph
-	for (int i = x2; i > x1; i--) {
+	// scale x-cordinate and draw lines
+	for (int x = -39; x < 39; x++) {
 
-		fx = Evaluate(poly, i);
-		graph[i][fx] = '*';
+		  graph[x][0] = '-';
+	}
+
+	for (int x = 0; x < 39; x+=5) {
+
+		graph[x][0] = '+';
+	}
+	for (int x = 0; x > -39; x -= 5) {
+
+		graph[x][0] = '+';
+	}
+
+	// scale y-cordinate and draw lines
+	for (int y = 12; y > -12; y--) {
+
+		graph[0][y] = '|';
+	}
+
+	for (int y = 0; y > -12; y-=5) {
+
+		graph[0][y] = '+';
+	}
+
+	for (int y = 0; y < 12; y += 5) {
+
+		graph[0][y] = '+';
+	}
+
+	// fix points on graph
+	for (int y = 12; y > -12; y--) {
+
+		for (int x = -39; x < 39; x++) {
+
+			if (x >= x1 && x <= x2) {
+
+				fx = Evaluate(poly, x);
+
+				if (fx == y && fx != NULL)
+					graph[x][y] = '*';
+			}
+		}
 	}
 
 	// print graph
-	for (int i = x1; i < x2; i++) {
+	for (int y = 12; y > -12; y--) {
 
-		for (int j = x2; j > x1; j--) {
+		for (int x = -39; x < 39; x++) {
 
-			std::cout << graph[j][i];
+			 std::cout << graph[x][y];
 		}
-
 		std::cout << "\n";
 	}
-
 
 } //end-Plot
