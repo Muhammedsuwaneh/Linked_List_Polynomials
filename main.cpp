@@ -253,21 +253,44 @@ void Test8() {
 	Plot(poly, -30, 30);
 	DeletePoly(poly);
 
-	// test 2 - Positive Quadratic Graph
+	//// test 2 - Positive Quadratic Graph
 
-	poly = CreatePoly((char*)"0.3x^2+0.4x-0.5x-5.4");
-	std::cout << "\n###################################################\n";
-	printf("Graph of: "); Print(poly);
-	printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
-	std::cout << "###################################################\n\n";
-	Plot(poly, -30, 30);
-	DeletePoly(poly);
+	//PolyNode* poly = CreatePoly((char*)"0.3x^2+0.4x-0.5x-5.4");
+	//std::cout << "\n###################################################\n";
+	//printf("Graph of: "); Print(poly);
+	//printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
+	//std::cout << "###################################################\n\n";
+	//Plot(poly, -30, 30);
+	//DeletePoly(poly);
 
-	// test 3 - Linear Graph
+	//// test 3 - Negative Quadratic Graph
 
-	
+	//PolyNode* poly = CreatePoly((char*)"-0.2x^2+0.4x-0.5x-3.4");
+	//std::cout << "\n###################################################\n";
+	//printf("Graph of: "); Print(poly);
+	//printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
+	//std::cout << "###################################################\n\n";
+	//Plot(poly, -30, 30);
+	//DeletePoly(poly);
 
+	//// test 4 - Positive Linear Graph
 
+	//PolyNode* poly = CreatePoly((char*)"2.0x+4.5");
+	//std::cout << "\n###################################################\n";
+	//printf("Graph of: "); Print(poly);
+	//printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
+	//std::cout << "###################################################\n\n";
+	//Plot(poly, -10, 10);
+	//DeletePoly(poly);
+
+	//// test 5 - Negative Linear Graph 
+	//PolyNode* poly = CreatePoly((char*)"-2.0x-4.5");
+	//std::cout << "\n###################################################\n";
+	//printf("Graph of: "); Print(poly);
+	//printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
+	//std::cout << "###################################################\n\n";
+	//Plot(poly, -10, 10);
+	//DeletePoly(poly);
 	
 } //end-Test8
 
