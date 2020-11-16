@@ -21,23 +21,23 @@ int main() {
 	GetWindowRect(console, &ConsoleRect);
 	MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 1200, 1200, false);
 
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test1();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test2();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test3();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test4();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test5();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test6();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test7();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 	Test8();
-	printf("====================================================================================\n");
+	printf("====================================================================================\n\n");
 
 	return 0;
 } // end-main
@@ -108,6 +108,26 @@ void Test1() {
 
 	poly = AddNode(poly, -5, 4);
 	printf("Adding -5x^4: "); Print(poly);
+
+	// other coefficients and exponents test
+	poly = AddNode(poly, -10.5, 2);
+	printf("Adding -10.5x^2: "); Print(poly);
+
+	poly = AddNode(poly, 0.5, 3);
+	printf("Adding 0.5x^3: "); Print(poly);
+
+	poly = AddNode(poly, 1.5, 10);
+	printf("Adding 1.5x^10: "); Print(poly);
+
+	poly = AddNode(poly, -0.5, 3);
+	printf("Adding -0.5x^3: "); Print(poly);
+
+	poly = AddNode(poly, 10.5, 2);
+	printf("Adding 10.5x^3: "); Print(poly);
+
+	poly = AddNode(poly, -1.5, 10);
+	printf("Adding -1.5x^10: "); Print(poly);
+
 } // end-Test1
 
 ///----------------------------------------------------------------
@@ -222,6 +242,13 @@ void Test6() {
 	PolyNode* poly = CreatePoly((char *)"-x^3  -  6x^2 + 4x + 22");
 	printf("%25s", "Poly[-x^3-6x^2+ 4x+22]: "); Print(poly);
 	printf("Evaluate(2): %4.2f\n", Evaluate(poly, 2.0));
+	DeletePoly(poly);
+
+	poly = CreatePoly((char*)"2x^3  -  4x^2 + 3x + 22");
+	printf("%25s", "Poly[-x^3-6x^2+ 4x+22]: "); Print(poly);
+	printf("Evaluate(-3): %4.2f\n", Evaluate(poly, -3.0));
+	DeletePoly(poly);
+
 } //end-Test6
 
 //----------------------------------------------------------------
@@ -230,11 +257,37 @@ void Test6() {
 void Test7() {
 	printf("%40s", "****** TEST 7 ******\n");
 
+	// poly 1
 	PolyNode* poly = CreatePoly((char *)"-x^3  -  6x^2 + 4x + 22");
 	printf("%25s", "Poly[-x^3-6x^2+ 4x+22]: "); Print(poly);
 
 	PolyNode* deriv = Derivative(poly);
 	printf("%25s", "Deriv[-x^3-6x^2+ 4x+22]: "); Print(deriv);
+
+	DeletePoly(poly);
+	DeletePoly(deriv);
+
+	// other tested polynomials
+	// poly 2
+	poly = CreatePoly((char*)"2x^5-6x^4+ 4x^3+2x^2+3x+2");
+	printf("%25s", "Poly[2x^5-6x^4+ 4x^3+2x^2+3x+2]: "); Print(poly);
+
+	deriv = Derivative(poly);
+	printf("%25s", "Deriv[2x^5-6x^4+ 4x^3+2x^2+3x+2]: "); Print(deriv);
+
+	DeletePoly(poly);
+	DeletePoly(deriv);
+
+	// poly 3
+	poly = CreatePoly((char*)"-10x^3 - 2.5x^2 + 1.3x - 0.5");
+	printf("%25s", "Poly[-10x^3 - 2.5x^2 + 1.3x - 0.5]: "); Print(poly);
+
+	deriv = Derivative(poly);
+	printf("%25s", "Deriv[-10x^3 - 2.5x^2 + 1.3x - 0.5]: "); Print(deriv);
+
+	DeletePoly(poly);
+	DeletePoly(deriv);
+
 } //end-Test7
 
 //----------------------------------------------------------------
@@ -248,31 +301,30 @@ void Test8() {
     PolyNode* poly = CreatePoly((char *)"0.004x^3+0.04x^2-1.5x-4.3");
 	std::cout << "\n###################################################\n";
 	printf("Graph of: "); Print(poly);
-	printf("Scale: x-axis- 1cm 5 units ---- y-axis- 1cm 5units\n");
+	printf("Scale: x-axis- 1cm 5 units    y-axis- 1cm 5units\n");
+	std::cout << "###################################################\n\n";
+	Plot(poly, -30, 30);
+
+	DeletePoly(poly);
+	// test 2 - Positive Quadratic Graph
+
+	poly = CreatePoly((char*)"0.3x^2+0.4x-5.4");
+	std::cout << "\n###################################################\n";
+	printf("Graph of: "); Print(poly);
+	printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
 	std::cout << "###################################################\n\n";
 	Plot(poly, -30, 30);
 	DeletePoly(poly);
 
-	//// test 2 - Positive Quadratic Graph
+	// test 3 - Negative Quadratic Graph
 
-	//PolyNode* poly = CreatePoly((char*)"0.3x^2+0.4x-0.5x-5.4");
-	//std::cout << "\n###################################################\n";
-	//printf("Graph of: "); Print(poly);
-	//printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
-	//std::cout << "###################################################\n\n";
-	//Plot(poly, -30, 30);
-	//DeletePoly(poly);
-
-	//// test 3 - Negative Quadratic Graph
-
-	//PolyNode* poly = CreatePoly((char*)"-0.2x^2+0.4x-0.5x-3.4");
-	//std::cout << "\n###################################################\n";
-	//printf("Graph of: "); Print(poly);
-	//printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
-	//std::cout << "###################################################\n\n";
-	//Plot(poly, -30, 30);
-	//DeletePoly(poly);
-
+	poly = CreatePoly((char*)"-0.02x^2+0.5x-3.4");
+	std::cout << "\n###################################################\n";
+	printf("Graph of: "); Print(poly);
+	printf("Scale: x-axis- 1cm 5 units     y-axis- 1cm 5units\n");
+	std::cout << "###################################################\n\n";
+	Plot(poly, -10, 10);
+	DeletePoly(poly);
 	//// test 4 - Positive Linear Graph
 
 	//PolyNode* poly = CreatePoly((char*)"2.0x+4.5");
