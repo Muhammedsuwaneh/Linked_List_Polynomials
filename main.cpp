@@ -309,7 +309,6 @@ void Test8() {
 	printf("%40s", "****** TEST 8 ******\n");
 	printf("%40s\n\n", "Plot of the function 0.004x^3+0.04x^2-1.5x-4.3");
 
-	// test 1 - Cubic graph 
     PolyNode* poly = CreatePoly((char *)"0.004x^3+0.04x^2-1.5x-4.3");
 	std::cout << "\n###################################################\n";
 	printf("Graph of: 0.004x^3+0.04x^2-1.5x-4.3\n");
