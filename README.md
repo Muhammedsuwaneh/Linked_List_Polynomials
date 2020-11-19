@@ -2,7 +2,7 @@
 
 Program Summary - Implementations 
 
-1. Creates a Polynomials from a given string
+1. Creates a Polynomials by parsing a given string
 2. Deletes a Polynomial
 3. Adds two or more Polynomials
 4. Subtracts two or more Polynomials
