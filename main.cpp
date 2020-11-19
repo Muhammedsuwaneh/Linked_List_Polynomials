@@ -1,3 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////////////////
+/*
+  Algorithms and Data Structures
+  LinkedList Polynomial Implementations
+  Contributors:
+  Muhammed Suwaneh - 152120181098
+  Department of Computer Engineering
+  Eskisehir Osmangazi University, November 2020
+  Eskisehir, Turkey
+ */
+ ////////////////////////////////////////////////////////////////////////////////////////////
+
 #include <stdio.h>
 #include <windows.h>
 #include <iostream>
@@ -298,12 +310,13 @@ void Test8() {
 	printf("%40s\n\n", "Plot of the function 0.004x^3+0.04x^2-1.5x-4.3");
 
 	// test 1 - Cubic graph 
-    PolyNode* poly1 = CreatePoly((char *)"0.004x^3+0.04x^2-1.5x-4.3");
+    PolyNode* poly = CreatePoly((char *)"0.004x^3+0.04x^2-1.5x-4.3");
 	std::cout << "\n###################################################\n";
-	printf("Graph of: "); Print(poly1);
+	printf("Graph of: 0.004x^3+0.04x^2-1.5x-4.3\n");
 	printf("Scale: x-axis- 1cm 5 units    y-axis- 1cm 5units\n");
 	std::cout << "###################################################\n\n";
-	Plot(poly1, -30, 30);
+	Plot(poly, -30, 30);
+	DeletePoly(poly);
 
 } //end-Test8
 

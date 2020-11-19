@@ -158,7 +158,11 @@ PolyNode *CreatePoly(char *expr){
 /// Walk over the poly nodes & delete them
 ///
 void DeletePoly(PolyNode* poly) {
-	delete poly;
+	while(poly) {
+		PolyNode* node = poly;
+		poly = poly->next;
+		delete node;
+	}
 } // end-DeletePoly
 	
 //-------------------------------------------------
@@ -400,54 +404,54 @@ void Plot(PolyNode *poly, int x1, int x2){
     char** _graph = new char*[a];
 	double fx = NULL;
 
-	for(int i = -a; i <= a; i++) 
+	for(int i = -a; i < a; i++) 
 		_graph[i] = new char[a];
 
-	// initialize graph with spaces
-	for (int x = -a; x <= a; x++) {
+	//// initialize graph with spaces
+	for (int y = b; y > -b; y--) {
 
-		for (int y = -a; y <= a; y++) {
+		for (int x = -a; x < a; x++) {
 
 			_graph[x][y] = ' ';
 		}
 	}
 
 	// scale x-cordinate and draw lines
-	for (int x = -a; x <= a; x++) {
+	for (int x = -a; x < a; x++) {
 
 		  _graph[x][0] = '-';
 	}
 
-	for (int x = 0; x <= a; x+=5) {
+	for (int x = 0; x < a; x+=5) {
 
 		_graph[x][0] = '+';
 	}
 
-	for (int x = 0; x >= -a; x -= 5) {
+	for (int x = 0; x > -a; x -= 5) {
 
 		_graph[x][0] = '+';
 	}
 
 	// scale y-cordinate and draw lines
-	for (int y = b; y >= -b; y--) {
+	for (int y = b; y > -b; y--) {
 
 		_graph[0][y] = '|';
 	}
 
-	for (int y = 0; y >= -b; y-=5) {
+	for (int y = 0; y > -b; y-=5) {
 
 		_graph[0][y] = '+';
 	}
 
-	for (int y = 0; y <= b; y += 5) {
+	for (int y = 0; y < b; y += 5) {
 
 		_graph[0][y] = '+';
 	}
 
 	// fix points on graph
-	for (int y = b; y >= -b; y--) {
+	for (int y = b; y > -b; y--) {
 
-		for (int x = -a; x <= a; x++) {
+		for (int x = -a; x < a; x++) {
 
 			if (x >= x1 && x <= x2) {
 
@@ -460,9 +464,9 @@ void Plot(PolyNode *poly, int x1, int x2){
 	}
 
 	// print graph
-	for (int y = b; y >= -b; y--) {
+	for (int y = b; y > -b; y--) {
 
-		for (int x = -a; x <= a; x++) {
+		for (int x = -a; x < a; x++) {
 
 			 std::cout << _graph[x][y];
 		}
