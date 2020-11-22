@@ -3,7 +3,7 @@
   Algorithms and Data Structures
   LinkedList Polynomial Implementations
   Contributors:
-  Muhammed Suwaneh - 152120181098
+  Muhammed Suwaneh
   Department of Computer Engineering
   Eskisehir Osmangazi University, November 2020
   Eskisehir, Turkey
