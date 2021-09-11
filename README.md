@@ -23,7 +23,7 @@ Operations:
 7. Finds a Polynomial's derivative i.e differentiates a Polynomial
 8. Plots a Polynomial base on a given x1 and x2 values
 
-For more info please find the question here[`Problem.png`](Problem/Problem.png)
+For more info please find the question here[`Problem.pdf`](Problem/Problem.pdf)
 
 ## Technologies 
 
