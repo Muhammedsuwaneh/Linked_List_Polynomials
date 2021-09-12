@@ -2,7 +2,7 @@
 
 ## Prerequisites 
 
-The project runs on C++ Visual Studio Environment. The program can be run in other IDEs as well.
+The project runs on a C++ Visual Studio Environment. The program can be run in other IDEs as well.
 To do that successfully, the files containing the source codes can to be copied. An enlarged console screen is suitable for correct
 visualization of the results computed
 
@@ -13,9 +13,10 @@ Program Summary - Implementations
 The program uses the Single Linked List Data Structure 
 
 Operations:
+ 
 
 1. Creates a Polynomials from a given string
-2. Deletes a Polynomial
+2. Deletes a Polynomial 
 3. Adds two or more Polynomials
 4. Subtracts two or more Polynomials
 5. Multiplies two or more Polynomials
